@@ -33,8 +33,8 @@ export async function uploadController(file: any) {
   });
 
   return {
-    message: "Arquivo recebido com sucesso",
+    message: "File recieved and job created",
     jobId: job.id,
-    folder: folderName,
+    // folder: folderName,
   };
 }

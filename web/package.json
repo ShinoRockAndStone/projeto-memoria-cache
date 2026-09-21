@@ -36,5 +36,10 @@
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
     "vitest": "^2.0.5"
-  }
+  },
+  "description": "This project was bootstrapped with [Vite](https://vite.dev/guide/).",
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

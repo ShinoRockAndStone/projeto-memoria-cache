@@ -5,8 +5,9 @@ import {
   Gear,
   Play,
 } from "@phosphor-icons/react";
-import GlobalHitImage from "../../assets/globalhit.png";
-import HistoryImage from "../../assets/history.png";
+import Tutorialzero from "../../assets/tutorialzero.png";
+import Tutorialone from "../../assets/tutorialone.png";
+import Tutorialtwo from "../../assets/tutorialtwo.png";
 
 export const Empty = () => {
   return (
@@ -79,78 +80,124 @@ export const Empty = () => {
 
         <div className="bg-white p-6 rounded-xl shadow-md lg transition-shadow duration-300">
           <h3 className="text-xl font-semibold text-gray-900 mb-2">
-            Understanding the Simulation screen
+            Following the Cache's Execution
           </h3>
-          {/* <p className="text-gray-600">
-            Na parte superior da tela são exibidas as informações do acesso
-            atual. O painel GLOBAL apresenta o ciclo da simulação, o endereço de
-            memória acessado, o número da instrução executada, o tempo acumulado
-            de execução e o resultado do acesso (Hit ou Miss). Essas informações
-            permitem identificar qual instrução está sendo executada e o impacto
-            desse acesso no desempenho do sistema. Logo abaixo, o painel da L1
-            Cache mostra como o endereço foi interpretado pela cache. São
-            apresentados os campos Tag, Set e Block Index, obtidos a partir da
-            divisão do endereço conforme a organização da cache configurada pelo
-            usuário. Além disso, são exibidos a taxa de acertos (Hit Rate), o
-            tempo médio de acesso (Average Access Time) e o resultado do acesso
-            atual. Na região central da tela encontra-se a representação dos
-            conjuntos (sets) da cache. Cada conjunto apresenta seus respectivos
-            blocos (ways), indicando informações como: Valid: informa se o bloco
-            contém dados válidos; Tag: valor utilizado para identificar se o
-            bloco corresponde ao endereço solicitado; Memory Range: intervalo de
-            endereços armazenado naquele bloco; Load: ciclo em que o bloco foi
-            carregado na cache; Last Access: último ciclo em que o bloco foi
-            utilizado. Durante a simulação, o conjunto acessado é destacado
-            visualmente, permitindo identificar rapidamente onde ocorreu a busca
-            e, em caso de substituição, qual bloco foi atualizado.
-          </p> */}
-          <img
-            src={GlobalHitImage}
-            alt="GLOBAL panel"
-            className="mx-auto p-4 rounded-md shadow-sm"
-          />
-          <ul>
+          <ul className="bullet-points-tutorial">
             <li>
-              The GLOBAL panel provides an overview of the current access,
-              including the simulation cycle, accessed memory address, executed
-              instruction number, accumulated execution time, and access result
-              (Hit or Miss).
-            </li>
-            <li>
-              This information helps identify which instruction is being
-              executed and its impact on system performance.
-            </li>
-            <li>
-              Below that, the L1 Cache panel shows how the address was
-              interpreted by the cache, displaying fields like Tag, Set, and
-              Block Index based on the cache organization configured by the
-              user.
-            </li>
-            <li>
-              It also shows hit rate, average access time, and the current
-              access result.
+              CacheLab's simulation screen shows the cache's current state in
+              the middle and the access history on the right. This overview
+              allows not only to see whether an access resulted in a Hit or Miss
+              (indicated by the colors green and red, respectively), but also
+              how each access affects the cache's content throughout it's
+              execution.
             </li>
           </ul>
           <img
-            src={HistoryImage}
-            alt="Cache History Panel"
+            src={Tutorialzero}
+            alt="full"
             className="mx-auto p-4 rounded-md shadow-sm"
           />
-          <p>
-            In the central area of the screen, sets of the cache are
-            represented, with each set showing its respective blocks (ways) and
-            their details such as Validity, Tag, Memory Range, Load cycle, and
-            Last Access cycle. During simulation, the accessed set is visually
-            highlighted for easy identification of where the search occurred and
-            which block was updated in case of replacement.
-          </p>
-
-          {/* <dl>
-            <dt>Coffee</dt>
-            <dd>- black hot drink</dd>
-            <dt>Milk</dt>
-            <dd>- white cold drink</dd>
-          </dl> */}
+          <ul className="bullet-points-tutorial">
+            <li>
+              In the example, the simulation is in Cycle 8 by the time the
+              processor accesses the address 0x1FFF000C00. It's telling that
+              this access resulted in a Hit, meaning that the data was already
+              present in the cache, more especifically in L1.
+            </li>
+            <li>
+              The address is divided into Tag, Set and Block Index, wich are
+              used to determine where the address must be searched in the cache.
+              The values for the current access are:
+            </li>
+            <ul className="bullet-points-tutorial-secondary">
+              <li>Tag: 0x3FFE001</li>
+              <li>Set: 16</li>
+              <li>Block Index: 0</li>
+            </ul>
+          </ul>
+          <img
+            src={Tutorialone}
+            alt="center"
+            className="mx-auto p-4 rounded-md shadow-sm"
+          />
+          <ul className="bullet-points-tutorial">
+            <li>
+              Each Set represents a group of cache lines, and the Block Index
+              indicates which line within the Set contains the data. In this
+              case, the data is found in Set 16, Line 0, confirming that the
+              access was a Hit.
+            </li>
+            <li>
+              In the middle, it shows the Set's information:
+              <ul className="bullet-points-tutorial-secondary">
+                <li>Block: identifies the cache line.</li>
+                <li>Valid: indicates if the cache line is valid.</li>
+                <li>
+                  Tag: identifies what part of the address is stored in the
+                  Block.
+                </li>
+                <li>
+                  Memory Range: indicates the range of memory addresses stored
+                  in the Block.
+                </li>
+                <li>
+                  Load: indicates the Cycle when the cache line was loaded into
+                  the cache.
+                </li>
+                <li>
+                  Last Access: indicates the most recent Cycle when the block
+                  was accessed.
+                </li>
+              </ul>
+            </li>
+            <li>
+              In Set 16, the Block has the Tag 0x3FFE001 and since the current
+              access (Cycle 8) has the same combinations of Tag and Set, the
+              simulation is able to locate the Block in the cache, resulting in
+              a Hit.
+            </li>
+            <li>
+              The others Sets (30 and 31) are also shown in the image because
+              they've been used before in the simulation.
+            </li>
+          </ul>
+          <img
+            src={Tutorialtwo}
+            alt="right"
+            className="mx-auto p-4 rounded-md shadow-sm"
+          />
+          <ul className="bullet-points-tutorial">
+            <li>
+              The right panel (image above) is the access history of the
+              simulation. Each card informs the Cycle, the address accessed, the
+              result of the access (Hit or Miss) and the fields utilized to
+              locate de address.
+            </li>
+            <li>
+              This history helps relate the information presentes in the middle
+              screen. For example:
+              <ul className="bullet-points-tutorial-secondary">
+                <li>
+                  In Cyclo 0, it tries to access 0x1FFF00C30, resulting in a
+                  Miss. However, that miss makes the cache load the Block
+                  containing a range of addressess.
+                </li>
+                <li>
+                  The addresses loaded due to the Miss in Cycle 0 include
+                  0x1FFF00C30, 0x1FFF000C28, 0x1FFF000C08 and 0x1FFF000C00.
+                  Thanks to that, Cycles 1, 2, 4, 5, 7 and 8 results in Hits.
+                </li>
+                <li>
+                  In Cycle 3, the address 0x10BFC0 results in a Miss. The
+                  corresponding Block is then loaded into Set 31.
+                </li>
+                <li>
+                  In Cycle 6, the address 0x10BFB8 also results in a Miss, wich
+                  leads into the load of a Block in Set 30.
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
       <div style={{ height: "100px" }}></div>

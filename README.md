@@ -45,12 +45,12 @@ curl -X POST "http://localhost:3333/uploads" -F "file=@hello.c"
 
 ```text id="2kqz6d"
 data/uploads/
-└── <uuid>-<nome-arquivo>/
-     ├── <nome-arquivo>.c (uploaded file)
-     ├── <nome-arquivo>.out (binary)
-     ├── <nome-arquivo>.trace (execution traces gattered by TracerGrind)
-     ├── <nome-arquivo>.texttrace (the traces in a more human readable format)
-     ├── <nome-arquivo>-main-memory-accesses.json (end result)
+└── <uuid>-<file-name>/
+     ├── <file-name>.c (uploaded file)
+     ├── <file-name>.out (binary)
+     ├── <file-name>.trace (execution traces gattered by TracerGrind)
+     ├── <file-name>.texttrace (the traces in a more human readable format)
+     ├── <file-name>-main-memory-accesses.json (end result)
      └── compile.log
 ```
 
